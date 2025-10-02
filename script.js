@@ -42,25 +42,36 @@ async function loadAndDisplayDogs(count = 5) {
             Text.innerHTML = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde culpa ea, est sed, sint dolores repudiandae corrupti praesentium odio quos dignissimos molestias rem distinctio ipsam nostrum recusandae aliquid magni. Ullam?";
             Authors.innerHTML = Author[randomAuthor];
             Data.innerHTML = Dates[randomData];
-            ContentBox.className = "ContentBox";
+            ContentBox.className = "ContentBoxLoad";
             newImageElement.id = "img"; 
             newImageElement.setAttribute("loading", "lazy");
                 
             newImageElement.src = dogImageUrl;
             newImageElement.alt = `Фото собаки`;
-            Sec1.appendChild(ButtonLike);
-            Sec1.appendChild(ButtonDisLike);
-            Sec2.appendChild(ButtonFavourite);
-            Sec2.appendChild(ButtonShare);
-            Nav.appendChild(Sec1);
-            Nav.appendChild(Sec2)
-            ContentBox.appendChild(newImageElement);
-            ContentBox.appendChild(Title);
-            ContentBox.appendChild(Text);
-            ContentBox.appendChild(Authors);
-            ContentBox.appendChild(Data);
-            ContentBox.appendChild(Nav);
+
+            let Load = document.createElement("div");
+            Load.className = "load";
+            ContentBox.appendChild(Load);
             Main.appendChild(ContentBox);
+
+            setTimeout(() =>{
+                ContentBox.removeChild(Load);
+                ContentBox.className = "ContentBox";
+                Sec1.appendChild(ButtonLike);
+                Sec1.appendChild(ButtonDisLike);
+                Sec2.appendChild(ButtonFavourite);
+                Sec2.appendChild(ButtonShare);
+                Nav.appendChild(Sec1);
+                Nav.appendChild(Sec2)
+                ContentBox.appendChild(newImageElement);
+                ContentBox.appendChild(Title);
+                ContentBox.appendChild(Text);
+                ContentBox.appendChild(Authors);
+                ContentBox.appendChild(Data);
+                ContentBox.appendChild(Nav);
+                Main.appendChild(ContentBox);
+            },2000)
+
         } 
         else {
             console.log(`Не удалось загрузить фото`);
@@ -73,20 +84,22 @@ async function loadAndDisplayDogs(count = 5) {
     for (const entry of entries) {
         if (entry.isIntersecting) {
             const currentLastChild = document.getElementById("main").lastChild;
-            if (currentLastChild && entry.target === currentLastChild) { 
-                await loadAndDisplayDogs(1); 
-                observer.unobserve(currentLastChild);
-                const newLastChild = document.getElementById("main").lastChild;
-                if (newLastChild) {
-                    observer.observe(newLastChild);
-                }
+            if (currentLastChild && entry.target === currentLastChild) {
+                setTimeout(async () => {
+                    await loadAndDisplayDogs(1); 
+                    observer.unobserve(currentLastChild);
+                    const newLastChild = document.getElementById("main").lastChild;
+                    if (newLastChild) {
+                        observer.observe(newLastChild);
+                    }
+                },2000);
             }
         }
     }
     }, 
     {
         root: null, 
-        threshold: 0.1 
+        threshold: 0.5 
     });
 
     const initialLastChild = document.getElementById("main").lastChild;
