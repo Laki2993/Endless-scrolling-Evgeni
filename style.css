@@ -1,0 +1,197 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    overflow: hidden;
+}
+
+header{
+    width: 100%;
+    height: 60px;
+    background-color: #247B8F;
+    padding-left: 0px;
+}
+
+h1{
+    width: fit-content;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 40px;
+    color: white;
+    letter-spacing: 10px;
+}
+
+main{
+    width: 100%;
+    min-height: 100vh;
+    height: fit-content;
+    background-color: rgba(255, 0, 0, 0);
+    display: grid;
+    justify-content: center;
+    gap: 300px;
+    align-items: center;
+    padding-top: 100px;
+}
+
+.preloader{
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.load{
+    width: 100px;
+    height: 100px;
+    background-image: url(https://images.icon-icons.com/1812/PNG/512/4213447-arrow-load-loading-refresh-reload-restart-sync_115423.png);
+    background-size: contain;
+    animation-name: load;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes load{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+#img{
+    width: 400px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+#img:hover{
+    transition: 0.3s;
+    width: 750px;
+    height: 375px;
+    border-radius: 10px;
+}
+
+img:not(:hover){
+    transition: 0.3s;
+    width: 400px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.ContentBox{
+    width: 1000px;
+    height: 500px;
+    display: grid;
+    justify-content: start;
+    padding: 30px;
+    background-color: #21B4D6;
+    border-radius: 24px;
+    overflow: scroll;
+    overflow: hidden;
+}
+
+h2{
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 35px;
+}
+
+h3{
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h4{
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 14px;
+}
+
+p{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: white;
+    font-size: 20px;
+}
+
+.nav{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sec1,.sec2{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+}
+
+.like,.dislike,.favorite,.share{
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    background-color: white;
+    background-size:contain;
+    border: none;
+}
+
+.like:hover{
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+
+.dislike:hover{
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+
+.favorite:hover{
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+
+.share:hover{
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+
+.like:not(:hover){
+    transform: scale(1.0);
+    transition: 0.3s;
+}
+
+.dislike:not(:hover){
+    transform: scale(1.0);
+    transition: 0.3s;
+}
+
+.favorite:not(:hover){
+    transform: scale(1.0);
+    transition: 0.3s;
+}
+
+.share:not(:hover){
+    transform: scale(1.0);
+    transition: 0.3s;
+}
+
+.like{
+    background-image: url("/Like.png");
+}
+
+.dislike{
+    background-image: url("/DisLike.png");
+}
+
+.favorite{
+    background-image: url("/Favourite.png");
+}
+
+.share{
+    background-image: url("Share.png");
+}
